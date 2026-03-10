@@ -50,8 +50,9 @@ For the Stream Deck+, you define touchscreen UI using custom JSON layouts.
 
 - **CPU Usage**: Can be reasonably calculated using the `node:os` module's `os.cpus()` by measuring the delta of `idle` times versus total cycles over an interval.
 - **RAM Usage on macOS**:
-  - **Avoid `os.freemem()`**: macOS (and Linux) uses unused RAM for file caching, meaning "free memory" will appear astronomically low (making used RAM seem constantly >95%).
   - **Use `systeminformation` (`si.mem()`)**: Rely on `mem.total - mem.available` to calculate actual active/used memory, which accurately aligns with the OS's Activity Monitor.
+  - **Absolute Precision (vm_stat)**: For 100% precision matching Activity Monitor (App + Wired + Compressed), parse `vm_stat` output.
+  - **CRITICAL PITFALL - PATH Limitations**: When using `child_process.exec()` inside a Stream Deck plugin, the `PATH` environment variable is heavily restricted. Commands like `vm_stat` will fail silently or fallback. **Always use absolute paths** (e.g., `/usr/bin/vm_stat`) for system commands.
 
 ## 7. Stream Deck Logs
 
