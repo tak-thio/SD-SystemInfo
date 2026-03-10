@@ -187,7 +187,7 @@ export class SystemMonitorAction extends SingletonAction {
 		if (os.platform() === "darwin") {
 			try {
 				const { stdout } = await new Promise<{ stdout: string; stderr: string }>((resolve, reject) => {
-					exec("vm_stat", (error, stdout, stderr) => {
+					exec("/usr/bin/vm_stat", (error, stdout, stderr) => {
 						if (error) reject(error);
 						else resolve({ stdout, stderr });
 					});

@@ -23703,7 +23703,7 @@ let SystemMonitorAction = (() => {
             if (os.platform() === "darwin") {
                 try {
                     const { stdout } = await new Promise((resolve, reject) => {
-                        exec("vm_stat", (error, stdout, stderr) => {
+                        exec("/usr/bin/vm_stat", (error, stdout, stderr) => {
                             if (error)
                                 reject(error);
                             else
