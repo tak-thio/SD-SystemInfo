@@ -23700,6 +23700,37 @@ let SystemMonitorAction = (() => {
             return Math.round(((totalDelta - idleDelta) / totalDelta) * 100);
         }
         async getRamInfo() {
+            if (os.platform() === "darwin") {
+                try {
+                    const { stdout } = await new Promise((resolve, reject) => {
+                        exec("vm_stat", (error, stdout, stderr) => {
+                            if (error)
+                                reject(error);
+                            else
+                                resolve({ stdout, stderr });
+                        });
+                    });
+                    const pageSizeMatch = stdout.match(/page size of (\d+) bytes/);
+                    const pageSize = pageSizeMatch ? parseInt(pageSizeMatch[1], 10) : 4096;
+                    const parseVal = (key) => {
+                        const match = stdout.match(new RegExp(`${key}:\\s+(\\d+)`));
+                        return match ? parseInt(match[1], 10) : 0;
+                    };
+                    const wired = parseVal("Pages wired down");
+                    const compressor = parseVal("Pages occupied by compressor");
+                    const anonymous = parseVal("Anonymous pages");
+                    const usedMem = (wired + compressor + anonymous) * pageSize;
+                    const totalMem = os.totalmem();
+                    return {
+                        usedPercent: Math.round((usedMem / totalMem) * 100),
+                        freeGB: ((totalMem - usedMem) / (1024 * 1024 * 1024)).toFixed(1) + "GB",
+                    };
+                }
+                catch (e) {
+                    streamDeck.logger.error(`vm_stat parsing failed: ${e}`);
+                    // Fallback to systeminformation
+                }
+            }
             const mem = await si.mem();
             const usedMem = mem.total - mem.available;
             return {
