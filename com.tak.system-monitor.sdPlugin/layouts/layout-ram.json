@@ -1,0 +1,49 @@
+{
+  "id": "layout-ram",
+  "items": [
+    {
+      "key": "ram-title",
+      "type": "text",
+      "rect": [0, 5, 100, 20],
+      "font": {
+        "size": 14,
+        "weight": 600
+      },
+      "alignment": "left",
+      "color": "#AAAAAA",
+      "value": "RAM Usage"
+    },
+    {
+      "key": "ram-value",
+      "type": "text",
+      "rect": [50, 26, 100, 30],
+      "font": {
+        "size": 28,
+        "weight": 700
+      },
+      "alignment": "center",
+      "color": "#66BB6A"
+    },
+    {
+      "key": "ram-free",
+      "type": "text",
+      "rect": [50, 58, 100, 14],
+      "font": {
+        "size": 12,
+        "weight": 400
+      },
+      "alignment": "center",
+      "color": "#888888"
+    },
+    {
+      "key": "ram-bar",
+      "type": "bar",
+      "rect": [10, 75, 180, 18],
+      "bar_bg_c": "0:#333333,1:#333333",
+      "bar_fill_c": "0:#2E7D32,1:#66BB6A",
+      "value": 0,
+      "subtype": 4,
+      "border_w": 1
+    }
+  ]
+}

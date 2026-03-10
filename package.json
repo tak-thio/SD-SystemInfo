@@ -1,0 +1,25 @@
+{
+  "name": "com.tak.system-monitor",
+  "version": "1.0.0",
+  "description": "Stream Deck+ plugin to display CPU and RAM usage on the touchscreen",
+  "main": "src/plugin.ts",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "@types/node": "^25.4.0",
+    "rollup": "^4.28.0",
+    "tslib": "^2.8.0",
+    "typescript": "^5.7.0"
+  },
+  "dependencies": {
+    "@elgato/streamdeck": "^1.2.0",
+    "systeminformation": "^5.31.4"
+  }
+}

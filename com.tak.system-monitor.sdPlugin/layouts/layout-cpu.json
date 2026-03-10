@@ -1,0 +1,38 @@
+{
+  "id": "layout-cpu",
+  "items": [
+    {
+      "key": "cpu-title",
+      "type": "text",
+      "rect": [0, 5, 90, 20],
+      "font": {
+        "size": 14,
+        "weight": 600
+      },
+      "alignment": "left",
+      "color": "#AAAAAA",
+      "value": "CPU Usage"
+    },
+    {
+      "key": "cpu-value",
+      "type": "text",
+      "rect": [50, 30, 100, 35],
+      "font": {
+        "size": 28,
+        "weight": 700
+      },
+      "alignment": "center",
+      "color": "#4FC3F7"
+    },
+    {
+      "key": "cpu-bar",
+      "type": "bar",
+      "rect": [10, 72, 180, 18],
+      "bar_bg_c": "0:#333333,1:#333333",
+      "bar_fill_c": "0:#0288D1,1:#4FC3F7",
+      "value": 0,
+      "subtype": 4,
+      "border_w": 1
+    }
+  ]
+}

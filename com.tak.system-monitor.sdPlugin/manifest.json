@@ -1,0 +1,54 @@
+{
+  "Author": "TAK",
+  "Name": "System Monitor",
+  "Description": "Display CPU and RAM usage on Stream Deck+ touchscreen",
+  "Icon": "imgs/plugin",
+  "Version": "1.0.0",
+  "SDKVersion": 2,
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.15"
+    },
+    {
+      "Platform": "windows",
+      "MinimumVersion": "10"
+    }
+  ],
+  "Software": {
+    "MinimumVersion": "6.9"
+  },
+  "Nodejs": {
+    "Version": "20",
+    "Debug": "enabled"
+  },
+  "Category": "System Monitor",
+  "CategoryIcon": "imgs/plugin",
+  "CodePath": "bin/plugin.js",
+  "Actions": [
+    {
+      "UUID": "com.tak.system-monitor.monitor",
+      "Name": "System Monitor",
+      "Icon": "imgs/action",
+      "Tooltip": "Displays CPU and RAM usage on the touchscreen",
+      "Controllers": ["Encoder"],
+      "Encoder": {
+        "layout": "layouts/layout-combined.json",
+        "TriggerDescription": {
+          "Rotate": "Switch View",
+          "Push": "Activity Monitor",
+          "Touch": "Activity Monitor",
+          "LongTouch": "Activity Monitor"
+        }
+      },
+      "States": [
+        {
+          "Image": "imgs/action",
+          "TitleAlignment": "middle",
+          "FontSize": "10"
+        }
+      ],
+      "PropertyInspectorPath": "ui/system-monitor.html"
+    }
+  ]
+}
